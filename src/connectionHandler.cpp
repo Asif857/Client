@@ -67,7 +67,7 @@ std::vector<char> ConnectionHandler::getLine() {
 }
 
 bool ConnectionHandler::sendLine(std::string& line) {
-    return sendFrameAscii(line, '\0');
+    return sendFrameAscii(line, ';');
 }
  
 std::vector<char> ConnectionHandler::getFrameAscii(char delimiter) {
