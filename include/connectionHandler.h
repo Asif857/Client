@@ -34,7 +34,7 @@ public:
 	
     // Read an ascii line from the server
     // Returns false in case connection closed before a newline can be read.
-    std::vector<char> getLine();
+    bool getLine(std::vector<char> b);
 	
 	// Send an ascii line from the server
     // Returns false in case connection closed before all the data is sent.
@@ -42,7 +42,7 @@ public:
  
     // Get Ascii data from the server until the delimiter character
     // Returns false in case connection closed before null can be read.
-    std::vector<char> getFrameAscii(char delimiter);
+    bool getFrameAscii(std::vector<char> b,char delimiter);
  
     // Send a message to the remote host.
     // Returns false in case connection is closed before all the data is sent.

@@ -5,7 +5,8 @@ int main() {
     std::cout << "Hello, World!" << std::endl;
     const short bufsize = 1024;
     char buf[bufsize];
-    std::cin.getline(buf, bufsize);
-    std::string line(buf);
-    std::cout<<line<<std::endl;
+    encoderDecoder enc;
+    std::vector<int> yop;
+    enc.printstuff(yop);
+
 }

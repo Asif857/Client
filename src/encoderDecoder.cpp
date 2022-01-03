@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-
 encoderDecoder::encoderDecoder() {
 }
 
@@ -32,6 +31,12 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 
-std::string encoderDecoder::decodeString(std::string message) {
+//std::string encoderDecoder::decodeString(std::string message) {
+//}
 
+void encoderDecoder::printstuff(std::vector<int> yop) {
+yop.push_back(1);
+}
+
+std::string encoderDecoder::decode(std::vector<char> bytes) {
 }

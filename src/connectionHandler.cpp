@@ -1,5 +1,7 @@
 #include "../../SPL3new/include/connectionHandler.h"
 #include <boost/lexical_cast.hpp>
+#include "../include/encoderDecoder.h"
+#include "../include/bidiProtocol.h"
 using boost::asio::ip::tcp;
 using std::cin;
 using std::cout;
@@ -62,17 +64,15 @@ bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     return true;
 }
  
-std::vector<char> ConnectionHandler::getLine() {
-    return getFrameAscii(';');
-
+bool ConnectionHandler::getLine(std::vector<char> bytes) {
+    return getFrameAscii(bytes,';');
 }
 
 bool ConnectionHandler::sendLine(std::string& line) {
     return sendFrameAscii(line, ';');
 }
  
-std::vector<char> ConnectionHandler::getFrameAscii(char delimiter) {
-    std::vector<char> bytes;
+bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
     char ch;
     // Stop when we encounter the null character. 
     // Notice that the null character is not appended to the frame string.
@@ -83,9 +83,12 @@ std::vector<char> ConnectionHandler::getFrameAscii(char delimiter) {
         }while (delimiter != ch);
     } catch (std::exception& e) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
-        return bytes;
+        return false;
     }
-    return bytes;
+    encoderDecoder enc;
+    bidiProtocol prot;
+    prot.process(enc.decode(bytes));
+    return true;
 }
  
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {

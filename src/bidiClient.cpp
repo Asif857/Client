@@ -1,9 +1,7 @@
-//
-// Created by nadavyaf@wincs.cs.bgu.ac.il on 03/01/2022.
-//
+#include <stdlib.h>
 #include "../include/Task.h"
+#include "../../SPL3new/include/connectionHandler.h"
 #include "../include/encoderDecoder.h"
-#include "../include/connectionHandler.h"
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -40,6 +38,6 @@ int main (int argc, char *argv[]) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
-        return 0;
+        std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
     }
 }
