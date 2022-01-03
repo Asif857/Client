@@ -39,4 +39,10 @@ yop.push_back(1);
 }
 
 std::string encoderDecoder::decode(std::vector<char> bytes) {
+    std::string ans="";
+    char bytesarr[2];
+    bytesarr[0] = bytes[0];
+    bytesarr[1] = bytes[1];
+    short opcode = bytesToShort(bytesarr);
+    return ans;
 }
