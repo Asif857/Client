@@ -1,6 +1,6 @@
 #include "../include/Task.h"
-
-void run(){
+Task::Task (int id,std::mutex& mutex,std::string host,short port): _id(id), _mutex(mutex),_host(std::move(host)),_port(port),_handler(_host,_port){}
+void Task::run(){
     // We can use one of three options to read data from the server:
     // 1. Read a fixed number of characters
     // 2. Read a line (up to the newline character using the getline() buffered reader
@@ -8,7 +8,7 @@ void run(){
         std::string answer;
 //        // Get back an answer: by using the expected number of bytes (len bytes + newline delimiter)
 //        // We could also use: connectionHandler.getline(answer) and then get the answer without the newline char at the end
-        if (!connectionHandler.getLine(answer)) {
+        if (_handler.getLine()) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
