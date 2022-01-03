@@ -3,7 +3,7 @@
 //
 #ifndef BIDIPROTOCOL_H
 #define BIDIPROTOCOL_H
-
+#include <string>
 class bidiProtocol{
 public:
     bidiProtocol();
