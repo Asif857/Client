@@ -21,10 +21,12 @@ include/encoderDecoder.h
 /users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/src/encoderDecoder.cpp
 ../include/encoderDecoder.h
 /users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/include/encoderDecoder.h
-algorithm
--
 iostream
 -
 cstring
+-
+sstream
+-
+vector
 -
 

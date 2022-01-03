@@ -7,7 +7,7 @@
 class encoderDecoder {
 public:
     encoderDecoder();
-    void decodeString (unsigned char* point,std::string message);
+    std::string decodeString (std::string message);
     std::string encode(std::string message);
     void shortToBytes(short num, char* bytesArr);
     short bytesToShort(char* bytesArr);
