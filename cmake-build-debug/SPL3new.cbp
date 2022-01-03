@@ -87,6 +87,9 @@
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/include/Task.h">
 			<Option target="SPL3new"/>
 		</Unit>
+		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/include/bidiClient.h">
+			<Option target="SPL3new"/>
+		</Unit>
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/include/encoderDecoder.h">
 			<Option target="SPL3new"/>
 		</Unit>
@@ -94,6 +97,9 @@
 			<Option target="SPL3new"/>
 		</Unit>
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/Task.cpp">
+			<Option target="SPL3new"/>
+		</Unit>
+		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiClient.cpp">
 			<Option target="SPL3new"/>
 		</Unit>
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiProtocol.cpp">

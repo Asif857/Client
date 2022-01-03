@@ -177,6 +177,30 @@ src/Task.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/Task.cpp.s
 .PHONY : src/Task.cpp.s
 
+src/bidiClient.o: src/bidiClient.cpp.o
+.PHONY : src/bidiClient.o
+
+# target to build an object file
+src/bidiClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/bidiClient.cpp.o
+.PHONY : src/bidiClient.cpp.o
+
+src/bidiClient.i: src/bidiClient.cpp.i
+.PHONY : src/bidiClient.i
+
+# target to preprocess a source file
+src/bidiClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/bidiClient.cpp.i
+.PHONY : src/bidiClient.cpp.i
+
+src/bidiClient.s: src/bidiClient.cpp.s
+.PHONY : src/bidiClient.s
+
+# target to generate assembly for a file
+src/bidiClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/bidiClient.cpp.s
+.PHONY : src/bidiClient.cpp.s
+
 src/bidiProtocol.o: src/bidiProtocol.cpp.o
 .PHONY : src/bidiProtocol.o
 
@@ -240,6 +264,9 @@ help:
 	@echo "... src/Task.o"
 	@echo "... src/Task.i"
 	@echo "... src/Task.s"
+	@echo "... src/bidiClient.o"
+	@echo "... src/bidiClient.i"
+	@echo "... src/bidiClient.s"
 	@echo "... src/bidiProtocol.o"
 	@echo "... src/bidiProtocol.i"
 	@echo "... src/bidiProtocol.s"
