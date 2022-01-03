@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug"
+			"value" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "21"
+			"value" : "20"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_CODEBLOCKS_COMPILER_ID",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/linux/bin/cmake"
+			"value" : "/users/studs/bsc/2022/nadavyaf/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/212.5457.51/bin/cmake/linux/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -167,7 +167,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/linux/bin/cpack"
+			"value" : "/users/studs/bsc/2022/nadavyaf/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/212.5457.51/bin/cmake/linux/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/linux/bin/ctest"
+			"value" : "/users/studs/bsc/2022/nadavyaf/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/212.5457.51/bin/cmake/linux/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -194,7 +194,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/c++"
 		},
 		{
@@ -322,7 +322,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/cc"
 		},
 		{
@@ -691,7 +691,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new"
+			"value" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -979,7 +979,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/users/studs/bsc/2022/rolantas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/cmake/linux/share/cmake-3.21"
+			"value" : "/users/studs/bsc/2022/nadavyaf/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/212.5457.51/bin/cmake/linux/share/cmake-3.20"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1259,19 +1259,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug"
-		},
-		{
-			"name" : "SPL3new_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
+			"value" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug"
 		},
 		{
 			"name" : "SPL3new_SOURCE_DIR",
@@ -1283,7 +1271,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new"
+			"value" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client"
 		}
 	],
 	"kind" : "cache",

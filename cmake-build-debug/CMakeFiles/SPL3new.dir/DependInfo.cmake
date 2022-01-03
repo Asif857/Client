@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/main.cpp" "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug/CMakeFiles/SPL3new.dir/main.cpp.o"
-  "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/src/Task.cpp" "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug/CMakeFiles/SPL3new.dir/src/Task.cpp.o"
-  "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/src/encoderDecoder.cpp" "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug/CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o"
+  "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/main.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/main.cpp.o"
+  "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/Task.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/Task.cpp.o"
+  "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiProtocol.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/bidiProtocol.cpp.o"
+  "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/encoderDecoder.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

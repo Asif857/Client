@@ -6,7 +6,6 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -39,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SPL3new::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SPL3new-Debug-0ec8428322f3d9c1b77a.json",
+					"jsonFile" : "target-SPL3new-Debug-edc59afbaa6dd6032538.json",
 					"name" : "SPL3new",
 					"projectIndex" : 0
 				}
@@ -49,12 +48,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug",
-		"source" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new"
+		"build" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug",
+		"source" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 2
 	}
 }

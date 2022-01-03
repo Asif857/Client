@@ -1,4 +1,16 @@
-#ifndef SPL3_BIDIPROTOCOL_H
-#define SPL3_BIDIPROTOCOL_H
+//
+//
+//
+#ifndef BIDIPROTOCOL_H
+#define BIDIPROTOCOL_H
 
-#endif //SPL3_BIDIPROTOCOL_H
+class bidiProtocol{
+public:
+    bidiProtocol();
+    std::string cutString(int index, std::string message);
+    void process(std::string message);
+};
+
+
+#endif
+
