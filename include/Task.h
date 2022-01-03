@@ -6,15 +6,16 @@
 #include <iostream>
 #include <mutex>
 #include <thread>
-#include "../../SPL3new/include/connectionHandler.h"
+#include "connectionHandler.h"
+
 class Task{
 private:
     int _id;
     std::mutex & _mutex;
-    ConnectionHandler handler;
+    ConnectionHandler _handler;
 
 public:
-    Task (int id,std::mutex& mutex) : _id(id), _mutex(mutex){}
+    Task (int id,std::mutex& mutex, short port, std::string host);
     void run(){}
 };
 #endif

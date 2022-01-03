@@ -1,12 +1,7 @@
 #include "../include/encoderDecoder.h"
 #include <iostream>
-#include <cstring>
 #include <sstream>
 #include <vector>
-void encoderDecoder::printstuff() {
-
-    std::cout<<"yo";
-}
 
 encoderDecoder::encoderDecoder() {
 }
@@ -38,7 +33,5 @@ short encoderDecoder::bytesToShort(char* bytesArr)
 }
 
 std::string encoderDecoder::decodeString(std::string message) {
-    message.
-
 
 }
