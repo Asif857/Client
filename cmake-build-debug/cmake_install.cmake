@@ -1,4 +1,4 @@
-# Install script for directory: /users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client
+# Install script for directory: /users/studs/bsc/2022/rolantas/CLionProjects/SPL3new
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,5 +1,5 @@
 #include "../include/Task.h"
-Task::Task (int id,std::mutex& mutex,std::string host,short port): _id(id), _mutex(mutex),_host(std::move(host)),_port(port),_handler(_host,_port){}
+Task::Task (std::string host,short port):_host(std::move(host)),_port(port),_handler(_host,_port),cv(){}
 void Task::run(){
     std::vector<char> bytes;
     while (!_handler.getProt().shouldTerminate()) {
@@ -8,4 +8,9 @@ void Task::run(){
             break;
         }
     }
+    cv.notify_all();
 }
+std::condition_variable &Task::getCv()  {
+    return cv;
+}
+

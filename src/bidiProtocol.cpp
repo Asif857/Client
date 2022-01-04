@@ -70,5 +70,8 @@ void bidiProtocol::process(std::string message){
 bool bidiProtocol::shouldTerminate()const {
     return terminate;
 }
+void bidiProtocol::setTerminate(bool terminate) {
+    bidiProtocol::terminate = terminate;
+}
 
 
