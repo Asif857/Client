@@ -54,10 +54,10 @@ public:
     // Close down the connection properly.
     void close();
 
-    const encoderDecoder getEncDec() const;
+    encoderDecoder getEncDec() const;
 
-    const bidiProtocol &getProtocol() const;
+    bidiProtocol getProtocol() const;
 
-}; //class ConnectionHandler
+    }; //class ConnectionHandler
  
 #endif

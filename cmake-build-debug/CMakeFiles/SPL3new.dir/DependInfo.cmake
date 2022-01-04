@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/Task.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/Task.cpp.o"
   "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiClient.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/bidiClient.cpp.o"
   "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiProtocol.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/bidiProtocol.cpp.o"
+  "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/connectionHandler.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/connectionHandler.cpp.o"
   "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/encoderDecoder.cpp" "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug/CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

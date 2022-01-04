@@ -102,6 +102,9 @@
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/bidiProtocol.cpp">
 			<Option target="SPL3new"/>
 		</Unit>
+		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/connectionHandler.cpp">
+			<Option target="SPL3new"/>
+		</Unit>
 		<Unit filename="/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/src/encoderDecoder.cpp">
 			<Option target="SPL3new"/>
 		</Unit>

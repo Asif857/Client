@@ -1,12 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include "include/encoderDecoder.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    const short bufsize = 1024;
-    char buf[bufsize];
-    encoderDecoder enc;
-    std::vector<int> yop;
-    enc.printstuff(yop);
-
+    std::string opcode = "12";
+    std::stringstream strOpcode(opcode);
+    short shortOpcode;
+    strOpcode >>shortOpcode;
 }

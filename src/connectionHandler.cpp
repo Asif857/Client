@@ -48,7 +48,7 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     return true;
 }
 
-bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
+bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite,  const char bytesArr[]) {
     int tmp = 0;
 	boost::system::error_code error;
     try {
@@ -85,12 +85,27 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
         return false;
     }
-    protocol.process(encdec.decode(bytes));
+    protocol_.process(encDec_.decode(bytes));
     return true;
 }
  
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
-	bool result=sendBytes(frame.c_str(),frame.length());
+    std::string opcode;
+    std::string updateFrame;
+    opcode.append(std::to_string(frame.at(0)));
+    if(frame.at(0) == '1' && frame.at(1) == '2'){
+        opcode.append(std::to_string(frame.at(1)));
+        updateFrame = frame.substr(2);
+    }
+    else{
+        updateFrame = frame.substr(1);
+    }
+    std::stringstream strOpcode(opcode);
+    short shortOpcode;
+    strOpcode >>shortOpcode;
+    char bytes[2];
+    encDec_.shortToBytes(shortOpcode, bytes);
+	bool result=sendBytes(frame.c_str(),frame.length(), bytes);
 	if(!result) return false;
 	return sendBytes(&delimiter,1);
 }
@@ -104,10 +119,10 @@ void ConnectionHandler::close() {
     }
 }
 
-const encoderDecoder ConnectionHandler::getEncDec() const {
+encoderDecoder ConnectionHandler::getEncDec() const {
     return encDec_;
 }
 
-bidiProtocol &ConnectionHandler::getProtocol() const {
+bidiProtocol ConnectionHandler::getProtocol() const {
     return protocol_;
 }

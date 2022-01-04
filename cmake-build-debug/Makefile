@@ -225,6 +225,30 @@ src/bidiProtocol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/bidiProtocol.cpp.s
 .PHONY : src/bidiProtocol.cpp.s
 
+src/connectionHandler.o: src/connectionHandler.cpp.o
+.PHONY : src/connectionHandler.o
+
+# target to build an object file
+src/connectionHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/connectionHandler.cpp.o
+.PHONY : src/connectionHandler.cpp.o
+
+src/connectionHandler.i: src/connectionHandler.cpp.i
+.PHONY : src/connectionHandler.i
+
+# target to preprocess a source file
+src/connectionHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/connectionHandler.cpp.i
+.PHONY : src/connectionHandler.cpp.i
+
+src/connectionHandler.s: src/connectionHandler.cpp.s
+.PHONY : src/connectionHandler.s
+
+# target to generate assembly for a file
+src/connectionHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SPL3new.dir/build.make CMakeFiles/SPL3new.dir/src/connectionHandler.cpp.s
+.PHONY : src/connectionHandler.cpp.s
+
 src/encoderDecoder.o: src/encoderDecoder.cpp.o
 .PHONY : src/encoderDecoder.o
 
@@ -270,6 +294,9 @@ help:
 	@echo "... src/bidiProtocol.o"
 	@echo "... src/bidiProtocol.i"
 	@echo "... src/bidiProtocol.s"
+	@echo "... src/connectionHandler.o"
+	@echo "... src/connectionHandler.i"
+	@echo "... src/connectionHandler.s"
 	@echo "... src/encoderDecoder.o"
 	@echo "... src/encoderDecoder.i"
 	@echo "... src/encoderDecoder.s"
