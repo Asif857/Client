@@ -74,4 +74,8 @@ bool bidiProtocol::shouldTerminate() const {
     return terminate_;
 }
 
+void bidiProtocol::terminate(){
+    terminate_ = true;
+}
+
 

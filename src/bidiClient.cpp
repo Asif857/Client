@@ -26,7 +26,7 @@ int main (int argc, char *argv[]) {
     Task task1(1, mutex);
     std::thread th1(&Task::run, &task1);
     //From here we will see the rest of the echo client implementation:
-    while (1) {
+    while (!connectionHandler.getProt().shouldTerminate()) {
         const short bufsize = 1024;
         char buf[bufsize];
         std::cin.getline(buf, bufsize);
@@ -35,6 +35,7 @@ int main (int argc, char *argv[]) {
         int len = sendLine.length();
         if (!connectionHandler.sendLine(sendLine)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
+            connectionHandler.getProt().terminate();
             break;
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;

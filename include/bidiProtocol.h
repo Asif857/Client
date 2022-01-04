@@ -12,6 +12,7 @@ public:
     std::string cutString(int index, std::string message);
     void process(std::string message);
     bool shouldTerminate() const;
+    void terminate();
 };
 
 
