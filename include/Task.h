@@ -16,8 +16,6 @@ private:
     short _port;
     ConnectionHandler _handler;
     std::condition_variable cv;
-    std::mutex mutex;
-    std::unique_lock<std::mutex> lk;
 public:
     std::condition_variable &getCv();
 

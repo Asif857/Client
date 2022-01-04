@@ -143,7 +143,8 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         std::string stringMessageOpcode = std::to_string(messageOpcode);
         ans.append(stringMessageOpcode);
         if(bytes.size() > 5){
-            for(int i=4; i<bytes.size()-1;i++){
+            int size = bytes.size();
+            for(int i=4; i<size-1;i++){
                 char charByte = bytes[i];
                 ans.append(std::to_string(charByte));
             }
