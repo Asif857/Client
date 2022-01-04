@@ -23,9 +23,9 @@ std::string encoderDecoder::encode(std::string msg) const {
     }
     if (ans[0]=="REGISTER"){
         ans[0]="1";
-        std::string userName = ans[1].substr(1,ans[1].length()-2);
-        std::string pass = ans[2].substr(1,ans[1].length()-2);
-        std::string birthday = ans[3].substr(1,ans[1].length()-2);
+        std::string userName = ans[1];
+        std::string pass = ans[2];
+        std::string birthday = ans[3];
         ans[1]=userName;
         ans[2]=zero;
         ans[3]=pass;
@@ -35,9 +35,9 @@ std::string encoderDecoder::encode(std::string msg) const {
     }
     else if (ans[0] == "LOGIN"){
         ans[0]="2";
-        std::string userName = ans[1].substr(1,ans[1].length()-2);
-        std::string pass = ans[2].substr(1,ans[1].length()-2);
-        std::string captcha = ans[3].substr(1,ans[1].length()-2);
+        std::string userName = ans[1];
+        std::string pass = ans[2];
+        std::string captcha = ans[3];
         ans[1]=userName;
         ans[2]=zero;
         ans[3]=pass;
@@ -49,22 +49,22 @@ std::string encoderDecoder::encode(std::string msg) const {
     }
     else if (ans[0]=="FOLLOW"){
         ans[0]="4";
-        std::string follow = ans[1].substr(1,ans[1].length()-2);
-        std::string userName = ans[2].substr(1,ans[1].length()-2);
+        std::string follow = ans[1];
+        std::string userName = ans[2];
         ans[1]=follow;
         ans[2]=userName;
         ans[3]=zero;
     }
     else if (ans[0]=="POST"){
         ans[0]="5";
-       std::string content = msg.substr(6,msg.length()-2);
-       ans[1]= content;
-       ans[2]=zero;
+        std::string content = msg.substr(5);
+        ans[1]= content;
+        ans[2]=zero;
     }
     else if (ans[0]=="PM") {
         ans[0] = "6";
-        std::string userName = ans[1].substr(1,ans[1].length()-2);
-        std::string content=msg.substr(5+ans[1].length(),msg.length()-2);
+        std::string userName = ans[1];
+        std::string content=msg.substr(3+ans[1].length());
         ans[1]=userName;
         ans[2]=zero;
         ans[3]=content;
@@ -82,11 +82,11 @@ std::string encoderDecoder::encode(std::string msg) const {
     }
     else if (ans[0]=="STAT"){
         ans[0]="8";
-        ans[1] = ans[1].substr(1,ans[1].length()-2);
+        ans[1] = ans[1];
     }
     else if (ans[0] == "BLOCK"){
         ans[0]="12";
-        ans[1]=ans[1].substr(1,ans[1].length()-2);
+        ans[1]=ans[1];
         ans[2]=zero;
     }
     for (std::string str : ans){
