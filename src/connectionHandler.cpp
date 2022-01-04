@@ -1,4 +1,4 @@
-#include "../../SPL3new/include/connectionHandler.h"
+#include "../include/connectionHandler.h"
 #include <boost/lexical_cast.hpp>
 #include "../include/encoderDecoder.h"
 #include "../include/bidiProtocol.h"

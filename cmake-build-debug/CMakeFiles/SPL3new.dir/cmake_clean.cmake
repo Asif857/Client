@@ -1,12 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SPL3new.dir/main.cpp.o"
-  "CMakeFiles/SPL3new.dir/main.cpp.o.d"
   "CMakeFiles/SPL3new.dir/src/Task.cpp.o"
-  "CMakeFiles/SPL3new.dir/src/Task.cpp.o.d"
+  "CMakeFiles/SPL3new.dir/src/bidiClient.cpp.o"
   "CMakeFiles/SPL3new.dir/src/bidiProtocol.cpp.o"
-  "CMakeFiles/SPL3new.dir/src/bidiProtocol.cpp.o.d"
   "CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o"
-  "CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o.d"
   "SPL3new"
   "SPL3new.pdb"
 )

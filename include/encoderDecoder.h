@@ -13,6 +13,5 @@ public:
     std::string encode(std::string message);
     void shortToBytes(short num, char* bytesArr);
     short bytesToShort(char* bytesArr);
-    void printstuff(std::vector<int> yop);
 };
 #endif

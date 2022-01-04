@@ -4,9 +4,7 @@
 #include "../include/bidiProtocol.h"
 
 
-bidiProtocol::bidiProtocol(){
-
-}
+bidiProtocol::bidiProtocol(){}
 
 std::string bidiProtocol::cutString(int index, std::string str){
     std::string ans;
