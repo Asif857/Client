@@ -6,7 +6,7 @@
 #include <string>
 class bidiProtocol{
 private:
-    bool terminate;
+    bool terminate_;
 public:
     bidiProtocol();
     std::string cutString(int index, std::string message);
@@ -14,6 +14,8 @@ public:
     bool shouldTerminate() const;
 
     void setTerminate(bool terminate);
+
+    void terminate();
 };
 
 
