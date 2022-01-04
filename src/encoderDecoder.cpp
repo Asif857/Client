@@ -105,10 +105,6 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     result += (short)(bytesArr[1] & 0xff);
     return result;
 }
-
-
-
-
 std::string encoderDecoder::decode(std::vector<char> bytes) {
     char getBytes[2];
     std::string ans;

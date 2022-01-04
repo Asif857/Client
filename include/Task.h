@@ -15,12 +15,16 @@ private:
     std::string _host;
     short _port;
     ConnectionHandler _handler;
-    std::condition_variable _cv;
+    std::condition_variable cv;
+    std::mutex mutex;
+    std::unique_lock<std::mutex> lk;
+public:
+    std::condition_variable &getCv();
 
 public:
     Task (std::string host,short port);
     void run();
-
-     std::condition_variable &getCv();
 };
+
+
 #endif

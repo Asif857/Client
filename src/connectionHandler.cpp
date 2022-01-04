@@ -131,6 +131,6 @@ const encoderDecoder &ConnectionHandler::getEnc() const {
     return enc;
 }
 
-bidiProtocol ConnectionHandler::getProt(){
+  bidiProtocol ConnectionHandler::getProt(){
     return prot;
 }

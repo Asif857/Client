@@ -6,13 +6,14 @@
 #include <string>
 class bidiProtocol{
 private:
-    bool terminate_;
+    bool terminate;
 public:
     bidiProtocol();
     std::string cutString(int index, std::string message);
     void process(std::string message);
     bool shouldTerminate() const;
-    void terminate();
+
+    void setTerminate(bool terminate);
 };
 
 
