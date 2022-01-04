@@ -39,7 +39,7 @@ void bidiProtocol::process(std::string message){
         else{
             messageType = "Public";
         }
-        std::cout<<("NOTIFICATION <" + messageType + "> <" + postingUsername + "> <" +content +">")<<std::endl;
+        std::cout<<("NOTIFICATION " + messageType + " " + postingUsername + " " +content)<<std::endl;
     }
     //ACK
     else if(opcode == "10"){
@@ -59,7 +59,7 @@ void bidiProtocol::process(std::string message){
         if(index < messageLength){
             optional = message.substr(4);
         }
-        std::cout<<("ACK <" + messageOpcode + "> <" + optional +">")<<std::endl;
+        std::cout<<("ACK " + messageOpcode + " " + optional)<<std::endl;
     }
     //ERROR
     else if(opcode == "11"){
