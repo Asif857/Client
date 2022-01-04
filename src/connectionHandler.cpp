@@ -100,7 +100,8 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
     std::string opcode;
     std::string updatedFrame;
-    opcode = std::to_string(frame.at(0));
+    opcode = frame.at(0);
+    std::cout<<opcode<<std::endl;
     if (frame.at(0)=='1' && frame.at(1)=='2'){
         opcode = "12";
         updatedFrame = frame.substr(2);

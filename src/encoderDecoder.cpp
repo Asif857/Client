@@ -94,6 +94,7 @@ std::string encoderDecoder::encode(std::string msg) const {
         if (str!="")
             toSend.append(str);
     }
+    std::cout<<toSend<<std::endl;
     return toSend;
 }
 
