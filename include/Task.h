@@ -12,13 +12,13 @@
 
 class Task{
 private:
-    ConnectionHandler* _handler;
+    ConnectionHandler *_handler;
     std::condition_variable cv;
 public:
     std::condition_variable &getCv();
-
-public:
     Task (ConnectionHandler* handler);
+    Task& operator=(const Task&);
+    Task(const Task& other);
     void run();
 
 };

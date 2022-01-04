@@ -23,7 +23,6 @@ int main (int argc, char *argv[]) {
     std::thread th1(&Task::run, &task1);
     std::mutex mtx;
     std::unique_lock<std::mutex> lk (mtx);
-    //From here we will see the rest of the echo client implementation:
     while (!connectionHandler.getProt().shouldTerminate()) {
         const short bufsize = 1024;
         char buf[bufsize];
@@ -37,7 +36,7 @@ int main (int argc, char *argv[]) {
             break;
         }
         if (sendLine=="3"){
-           // task1.getCv().wait(lk);
+           task1.getCv().wait(lk);
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
     }
