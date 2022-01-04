@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "../include/Task.h"
-#include "../../SPL3new/include/connectionHandler.h"
+#include "../include/connectionHandler.h"
 #include "../include/encoderDecoder.h"
 #include <iostream>
 #include <ostream>

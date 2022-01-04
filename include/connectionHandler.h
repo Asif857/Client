@@ -56,7 +56,7 @@ public:
     // Close down the connection properly.
     void close();
 
-    const bidiProtocol &getProt() const;
+    const bidiProtocol getProt() const;
 
 }; //class ConnectionHandler
  

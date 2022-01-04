@@ -1,3 +1,4 @@
+#define SPL3_BIDIPROTOCOL_H
 #include <string>
 #include <iostream>
 #include "../include/bidiProtocol.h"

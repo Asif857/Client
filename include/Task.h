@@ -7,7 +7,8 @@
 #include <mutex>
 #include <thread>
 #include <utility>
-#include "../../SPL3new/include/connectionHandler.h"
+#include "connectionHandler.h"
+
 class Task{
 private:
     int _id;
