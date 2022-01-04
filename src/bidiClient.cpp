@@ -22,7 +22,6 @@ int main (int argc, char *argv[]) {
         std::cerr << "Cannot connect to " << host << ":" << port << std::endl;
         return 1;
     }
-    encoderDecoder enc;
     std::mutex mutex;
     Task task1(1, mutex);
     std::thread th1(&Task::run, &task1);
@@ -32,7 +31,7 @@ int main (int argc, char *argv[]) {
         char buf[bufsize];
         std::cin.getline(buf, bufsize);
         std::string line(buf);
-        std::string sendLine = enc.encode(line);
+        std::string sendLine = connectionHandler.getEnc().encode(line);
         int len = sendLine.length();
         if (!connectionHandler.sendLine(sendLine)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;

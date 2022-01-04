@@ -9,7 +9,7 @@ using std::cerr;
 using std::endl;
 using std::string;
  
-ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_){}
+ConnectionHandler::ConnectionHandler(string host, short port): host_(host), port_(port), io_service_(), socket_(io_service_),enc(),prot(){}
     
 ConnectionHandler::~ConnectionHandler() {
     close();
@@ -85,8 +85,6 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
         return false;
     }
-    encoderDecoder enc;
-    bidiProtocol prot;
     prot.process(enc.decode(bytes));
     return true;
 }
@@ -104,4 +102,12 @@ void ConnectionHandler::close() {
     } catch (...) {
         std::cout << "closing failed: connection already closed" << std::endl;
     }
+}
+
+const encoderDecoder &ConnectionHandler::getEnc() const {
+    return enc;
+}
+
+const bidiProtocol &ConnectionHandler::getProt() const {
+    return prot;
 }

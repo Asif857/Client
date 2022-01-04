@@ -4,7 +4,8 @@
 #include <string>
 #include <iostream>
 #include <boost/asio.hpp>
-
+#include "../include/encoderDecoder.h"
+#include "../include/bidiProtocol.h"
 
 using boost::asio::ip::tcp;
 
@@ -14,6 +15,8 @@ private:
 	const short port_;
 	boost::asio::io_service io_service_;   // Provides core I/O functionality
 	tcp::socket socket_;
+    encoderDecoder enc;
+    bidiProtocol prot;
  
 public:
     ConnectionHandler(std::string host, short port);
@@ -47,10 +50,14 @@ public:
     // Send a message to the remote host.
     // Returns false in case connection is closed before all the data is sent.
     bool sendFrameAscii(const std::string& frame, char delimiter);
-	
+
+    const encoderDecoder &getEnc() const;
+
     // Close down the connection properly.
     void close();
- 
+
+    const bidiProtocol &getProt() const;
+
 }; //class ConnectionHandler
  
 #endif

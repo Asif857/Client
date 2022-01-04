@@ -10,7 +10,7 @@ class encoderDecoder {
 public:
     encoderDecoder();
     std::string decode (std::vector<char> bytes);
-    std::string encode(std::string message);
+    std::string encode(std::string message) const;
     void shortToBytes(short num, char* bytesArr);
     short bytesToShort(char* bytesArr);
     void printstuff(std::vector<int> yop);
