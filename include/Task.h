@@ -20,7 +20,6 @@ public:
     Task& operator=(const Task&);
     Task(const Task& other);
     void run();
-
 };
 
 
