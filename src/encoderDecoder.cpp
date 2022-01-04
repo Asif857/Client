@@ -106,18 +106,62 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 
-//std::string encoderDecoder::decodeString(std::string message) {
-//}
 
-void encoderDecoder::printstuff(std::vector<int> yop) {
-yop.push_back(1);
-}
+
 
 std::string encoderDecoder::decode(std::vector<char> bytes) {
-    std::string ans="";
-    char bytesarr[2];
-    bytesarr[0] = bytes[0];
-    bytesarr[1] = bytes[1];
-    short opcode = bytesToShort(bytesarr);
+    char getBytes[2];
+    std::string ans;
+    getBytes[0] = bytes[0];
+    getBytes[1] = bytes[1];
+    short opcode = bytesToShort(getBytes);
+    std::string strOpcode = std::to_string(opcode);
+    ans.append(strOpcode);
+    //notification
+    if(opcode == 9){
+        short shortByte = bytes[2];
+        ans.append(std::to_string(shortByte));
+        int index = 3;
+        char currByte = bytes[index];
+        while(currByte != '\0'){
+            ans.append(std::to_string(currByte));
+            index++;
+            currByte = bytes[index];
+        }
+        ans.append(std::to_string('\0'));
+        index++;
+        currByte = bytes[index];
+        while(currByte != '\0'){
+            ans.append(std::to_string(currByte));
+            index++;
+            currByte = bytes[index];
+        }
+        ans.append(std::to_string('\0'));
+    }
+    //ack
+    else if(opcode == 10){
+        char newBytes[2];
+        newBytes[0] = bytes[2];
+        newBytes[1] = bytes[3];
+        short messageOpcode = bytesToShort(newBytes);
+        std::string stringMessageOpcode = std::to_string(messageOpcode);
+        ans.append(stringMessageOpcode);
+        if(bytes.size() > 5){
+            for(int i=4; i<bytes.size()-1;i++){
+                char charByte = bytes[i];
+                ans.append(std::to_string(charByte));
+            }
+        }
+        return ans;
+    }
+    //error
+    else if(opcode == 11){
+      char newBytes[2];
+      newBytes[0] = bytes[2];
+      newBytes[1] = bytes[3];
+      short messageOpcode = bytesToShort(newBytes);
+      std::string stringMessageOpcode = std::to_string(messageOpcode);
+      ans.append(stringMessageOpcode);
+    }
     return ans;
 }

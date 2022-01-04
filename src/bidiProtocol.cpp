@@ -1,10 +1,9 @@
-#define SPL3_BIDIPROTOCOL_H
 #include <string>
 #include <iostream>
 #include "../include/bidiProtocol.h"
 
 
-bidiProtocol::bidiProtocol(){}
+bidiProtocol::bidiProtocol():terminate_(false){}
 
 std::string bidiProtocol::cutString(int index, std::string str){
     std::string ans;
@@ -53,6 +52,9 @@ void bidiProtocol::process(std::string message){
                 index++;
             }
         }
+        if(messageOpcode == "3"){
+            terminate_ = true;
+        }
         std::string optional;
         if(index < message.length()){
             optional = message.substr(4);
@@ -65,6 +67,11 @@ void bidiProtocol::process(std::string message){
         errMsg = message.substr(2);
         std::cout<<("ERROR " + errMsg)<<std::endl;
     }
+
+}
+
+bool bidiProtocol::shouldTerminate() const {
+    return terminate_;
 }
 
 

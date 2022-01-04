@@ -1,7 +1,10 @@
-#include "../../SPL3new/include/connectionHandler.h"
+#include "../include/connectionHandler.h"
 #include <boost/lexical_cast.hpp>
+#include <boost/asio/ip/tcp.hpp>
 #include "../include/encoderDecoder.h"
 #include "../include/bidiProtocol.h"
+#include "../include/connectionHandler.h"
+
 using boost::asio::ip::tcp;
 using std::cin;
 using std::cout;
@@ -128,6 +131,6 @@ const encoderDecoder &ConnectionHandler::getEnc() const {
     return enc;
 }
 
-const bidiProtocol &ConnectionHandler::getProt() const {
+const bidiProtocol ConnectionHandler::getProt() const {
     return prot;
 }
