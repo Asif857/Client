@@ -5,6 +5,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <condition_variable>
 
 /**
 * This code assumes that the server replies the exact text the client sent it (as opposed to the practical session example)
@@ -23,7 +24,8 @@ int main (int argc, char *argv[]) {
         return 1;
     }
     std::mutex mutex;
-    Task task1(1, mutex);
+    std::unique_lock<std::mutex> lk(mutex);
+    Task task1(host, port);
     std::thread th1(&Task::run, &task1);
     //From here we will see the rest of the echo client implementation:
     while (!connectionHandler.getProt().shouldTerminate()) {
@@ -37,6 +39,9 @@ int main (int argc, char *argv[]) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             connectionHandler.getProt().terminate();
             break;
+        }
+        if(sendLine == "3"){
+            task1.getCv().wait(lk);
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
     }

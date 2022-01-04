@@ -7,18 +7,20 @@
 #include <mutex>
 #include <thread>
 #include <utility>
+#include <condition_variable>
 #include "connectionHandler.h"
 
 class Task{
 private:
-    int _id;
-    std::mutex & _mutex;
     std::string _host;
     short _port;
     ConnectionHandler _handler;
+    std::condition_variable _cv;
 
 public:
-    Task (int id,std::mutex& mutex,std::string host,short port);
+    Task (std::string host,short port);
     void run();
+
+     std::condition_variable &getCv();
 };
 #endif
