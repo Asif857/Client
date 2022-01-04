@@ -105,14 +105,6 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     result += (short)(bytesArr[1] & 0xff);
     return result;
 }
-
-//std::string encoderDecoder::decodeString(std::string message) {
-//}
-
-void encoderDecoder::printstuff(std::vector<int> yop) {
-yop.push_back(1);
-}
-
 std::string encoderDecoder::decode(std::vector<char> bytes) {
     std::string ans="";
     char bytesarr[2];
