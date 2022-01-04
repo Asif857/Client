@@ -12,15 +12,13 @@
 
 class Task{
 private:
-    std::string _host;
-    short _port;
-    ConnectionHandler _handler;
+    ConnectionHandler* _handler;
     std::condition_variable cv;
 public:
     std::condition_variable &getCv();
 
 public:
-    Task (std::string host,short port);
+    Task (ConnectionHandler* handler);
     void run();
 };
 

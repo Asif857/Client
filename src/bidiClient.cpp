@@ -19,7 +19,7 @@ int main (int argc, char *argv[]) {
         std::cerr << "Cannot connect to " << host << ":" << port << std::endl;
         return 1;
     }
-    Task task1(host,port);
+    Task task1(&connectionHandler);
     std::thread th1(&Task::run, &task1);
     std::mutex mtx;
     std::unique_lock<std::mutex> lk (mtx);
@@ -37,7 +37,7 @@ int main (int argc, char *argv[]) {
             break;
         }
         if (sendLine=="3"){
-            task1.getCv().wait(lk);
+           // task1.getCv().wait(lk);
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
     }
