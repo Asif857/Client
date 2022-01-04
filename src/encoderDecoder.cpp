@@ -15,27 +15,24 @@ std::string encoderDecoder::encode(std::string msg) const {
     std::string toSend;
     std::string zero = "\0";
     int i =0;
-    std::cout<<"Hello mate!"<<std::endl;
     while (getline(s,tmp,' ')){
         ans.push_back(tmp);
         if (ans[0] == "POST" || (ans[0] == "PM" && i==1))
             break;
         i++;
     }
+    while (ans.size()<7)
+        ans.push_back("");
     if (ans[0]=="REGISTER"){
-        std::cout<<"got here!"<<std::endl;
+        ans[0]="1";
         std::string userName = ans[1];
         std::string pass = ans[2];
         std::string birthday = ans[3];
-        ans.clear();
-        ans[0] = ("1");
-        ans[1] = userName;
-        ans[2] = zero;
-        ans[3] = pass;
-        ans[4] = zero;
-        ans[5] = birthday;
-        ans[6] = zero;
-
+        ans[2]=zero;
+        ans[3]=pass;
+        ans[4]=zero;
+        ans[5]=birthday;
+        ans[6]=zero;
     }
     else if (ans[0] == "LOGIN"){
         ans[0]="2";
@@ -94,7 +91,8 @@ std::string encoderDecoder::encode(std::string msg) const {
         ans[2]=zero;
     }
     for (std::string str : ans){
-        toSend.append(str);
+        if (str!="")
+            toSend.append(str);
     }
     return toSend;
 }
@@ -163,10 +161,6 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
       short messageOpcode = bytesToShort(newBytes);
       std::string stringMessageOpcode = std::to_string(messageOpcode);
       ans.append(stringMessageOpcode);
-        return ans;
-    }
-    else{
-        std::cout<<"Nothing happened!"<<std::endl;
     }
     return ans;
 }
