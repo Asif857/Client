@@ -92,7 +92,6 @@ std::string encoderDecoder::encode(std::string msg) const {
     for (std::string str : ans){
         toSend.append(str);
     }
-    toSend.append(";");
     return toSend;
 }
 

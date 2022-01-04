@@ -48,10 +48,11 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     return true;
 }
 
-bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
+bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite,char* bytesarr) {
     int tmp = 0;
 	boost::system::error_code error;
     try {
+        socket_.write_some(boost::asio::buffer(bytesarr))
         while (!error && bytesToWrite > tmp ) {
 			tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
         }
@@ -90,7 +91,21 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
 }
  
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
-	bool result=sendBytes(frame.c_str(),frame.length());
+    std::string opcode;
+    std::string updatedFrame;
+    opcode = std::to_string(frame.at(0));
+    if (frame.at(0)=='1' && frame.at(1)=='2'){
+        opcode = "12";
+        updatedFrame = frame.substr(2);
+    }
+    else
+        updatedFrame = frame.substr(1);
+    std::stringstream strOpcode(opcode);
+    short shortopcode;
+    strOpcode >> shortopcode;
+    char bytes[2];
+    enc.shortToBytes(shortopcode,bytes);
+	bool result=sendBytes(updatedFrame.c_str(),updatedFrame.length(),bytes);
 	if(!result) return false;
 	return sendBytes(&delimiter,1);
 }

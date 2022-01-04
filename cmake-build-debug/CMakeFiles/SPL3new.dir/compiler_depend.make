@@ -174,27 +174,6 @@ CMakeFiles/SPL3new.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/7/bits/vector.tcc \
   /usr/include/c++/7/sstream \
   /usr/include/c++/7/bits/sstream.tcc \
-  /usr/include/c++/7/iomanip \
-  /usr/include/c++/7/locale \
-  /usr/include/c++/7/bits/locale_facets_nonio.h \
-  /usr/include/c++/7/ctime \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
-  /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
-  /usr/include/libintl.h \
-  /usr/include/c++/7/bits/codecvt.h \
-  /usr/include/c++/7/bits/locale_facets_nonio.tcc \
-  /usr/include/c++/7/bits/locale_conv.h \
-  /usr/include/c++/7/bits/stringfwd.h \
-  /usr/include/c++/7/bits/allocator.h \
-  /usr/include/c++/7/bits/codecvt.h \
-  /usr/include/c++/7/bits/unique_ptr.h \
-  /usr/include/c++/7/utility \
-  /usr/include/c++/7/bits/stl_relops.h \
-  /usr/include/c++/7/tuple \
-  /usr/include/c++/7/array \
-  /usr/include/c++/7/bits/uses_allocator.h \
-  /usr/include/c++/7/bits/invoke.h \
-  /usr/include/c++/7/bits/quoted_string.h \
   ../include/encoderDecoder.h
 
 CMakeFiles/SPL3new.dir/src/Task.cpp.o: ../src/Task.cpp \
@@ -564,8 +543,6 @@ CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o: ../src/encoderDecoder.cpp \
   /usr/include/c++/7/bits/quoted_string.h
 
 
-../src/bidiProtocol.cpp:
-
 /usr/include/c++/7/bits/quoted_string.h:
 
 /usr/include/c++/7/array:
@@ -574,9 +551,11 @@ CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o: ../src/encoderDecoder.cpp \
 
 /usr/include/c++/7/bits/locale_conv.h:
 
+/usr/include/c++/7/bits/locale_facets_nonio.h:
+
 /usr/include/c++/7/ctime:
 
-/usr/include/c++/7/bits/locale_facets_nonio.h:
+../src/bidiProtocol.cpp:
 
 /usr/include/c++/7/locale:
 
@@ -760,9 +739,9 @@ CMakeFiles/SPL3new.dir/src/encoderDecoder.cpp.o: ../src/encoderDecoder.cpp \
 
 /usr/include/c++/7/bits/ios_base.h:
 
-../src/encoderDecoder.cpp:
-
 /usr/include/c++/7/bits/codecvt.h:
+
+../src/encoderDecoder.cpp:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
