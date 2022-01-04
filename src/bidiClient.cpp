@@ -28,14 +28,17 @@ int main (int argc, char *argv[]) {
         char buf[bufsize];
         std::cin.getline(buf, bufsize);
         std::string line(buf);
-        std::string sendLine = connectionHandler.getEnc().encode(line);
-        int len = sendLine.length();
+        std::vector<char> sendLine = connectionHandler.getEnc().encode(line);
+        int len = sendLine.size();
         if (!connectionHandler.sendLine(sendLine)) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             connectionHandler.getProt().setTerminate(true);
             break;
         }
-        if (sendLine=="3"){
+        char opcode[2];
+        opcode[0]=sendLine[0];
+        opcode[1]=sendLine[1];
+        if (connectionHandler.getEnc().bytesToShort(opcode) == 3){
            task1.getCv().wait(lk);
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
