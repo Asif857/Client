@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "../include/bidiProtocol.h"
-bidiProtocol::bidiProtocol(): terminate(false){}
+bidiProtocol::bidiProtocol(): terminate_(false){}
 std::string bidiProtocol::cutString(int index, std::string str){
     std::string ans;
     int len = str.length();
@@ -45,17 +45,18 @@ void bidiProtocol::process(std::string message){
     else if(opcode == "10"){
         std::string messageOpcode = std::to_string(message.at(2));
         index ++;
+        int messageLength = message.length();
         if(messageOpcode == "1"){
-            if(index < message.length() && message.at(index+1) =='2'){
+            if(index < messageLength && message.at(index+1) =='2'){
                 messageOpcode += std::to_string(message.at(index+1));
                 index++;
             }
         }
         if (messageOpcode == "3"){
-            terminate=true;
+            terminate_=true;
         }
         std::string optional;
-        if(index < message.length()){
+        if(index < messageLength){
             optional = message.substr(4);
         }
         std::cout<<("ACK <" + messageOpcode + "> <" + optional +">")<<std::endl;
@@ -69,11 +70,9 @@ void bidiProtocol::process(std::string message){
 }
 
 bool bidiProtocol::shouldTerminate()const {
-    return terminate;
+    return terminate_;
 }
-void bidiProtocol::setTerminate(bool terminate) {
-    bidiProtocol::terminate = terminate;
-}
+
 
 void bidiProtocol::terminate(){
     terminate_ = true;
