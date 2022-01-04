@@ -5,7 +5,8 @@
 bidiProtocol::bidiProtocol(): terminate(false){}
 std::string bidiProtocol::cutString(int index, std::string str){
     std::string ans;
-    while(index < str.length() && str.at(index) != '\0'){
+    int len = str.length();
+    while(index < len && str.at(index) != '\0'){
         ans += str.at(index);
         index++;
     }
