@@ -8,12 +8,12 @@
 encoderDecoder::encoderDecoder() {
 }
 
-std::string encoderDecoder::encode(std::string msg) const {
+std::vector<char> encoderDecoder::encode(std::string msg) {
     std::stringstream s(msg);
     std::vector<std::string> ans;
     std::string tmp;
-    std::string toSend;
-    std::string zero = "\0";
+    std::vector<char> returned;
+    char zero = '\0';
     int i =0;
     while (getline(s,tmp,' ')){
         ans.push_back(tmp);
@@ -21,81 +21,147 @@ std::string encoderDecoder::encode(std::string msg) const {
             break;
         i++;
     }
-    while (ans.size()<7)
+    char opBytes[2];
+    short opcode;
+    while (ans.size()<7) {
         ans.push_back("");
+    }
     if (ans[0]=="REGISTER"){
-        ans[0]="1";
+        opcode = 1;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
         std::string userName = ans[1];
         std::string pass = ans[2];
         std::string birthday = ans[3];
-        ans[2]=zero;
-        ans[3]=pass;
-        ans[4]=zero;
-        ans[5]=birthday;
-        ans[6]=zero;
+        for(char userChar: userName){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        for(char userChar: pass){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        for(char userChar: birthday){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
-    else if (ans[0] == "LOGIN"){
-        ans[0]="2";
+    else if (ans[0] == "LOGIN") {
+        opcode = 2;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
         std::string userName = ans[1];
         std::string pass = ans[2];
         std::string captcha = ans[3];
-        ans[1]=userName;
-        ans[2]=zero;
-        ans[3]=pass;
-        ans[4]=zero;
-        ans[5]=captcha;
+        for (char userChar: userName) {
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        for (char userChar: pass) {
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        for (char userChar: captcha) {
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
     else if (ans[0] == "LOGOUT"){
-        ans[0]="3";
+        opcode = 3;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
+        return returned;
     }
     else if (ans[0]=="FOLLOW"){
-        ans[0]="4";
+        opcode = 4;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
         std::string follow = ans[1];
         std::string userName = ans[2];
-        ans[1]=follow;
-        ans[2]=userName;
-        ans[3]=zero;
+        for (char userChar: follow) {
+            returned.push_back(userChar);
+        }
+        for (char userChar: userName) {
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
     else if (ans[0]=="POST"){
-        ans[0]="5";
+        opcode = 5;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
         std::string content = msg.substr(5);
-        ans[1]= content;
-        ans[2]=zero;
+        for(char userChar: content){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
     else if (ans[0]=="PM") {
-        ans[0] = "6";
+        opcode = 6;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
         std::string userName = ans[1];
         std::string content=msg.substr(3+ans[1].length());
-        ans[1]=userName;
-        ans[2]=zero;
-        ans[3]=content;
-        ans[4]=zero;
+        for(char userChar: userName){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        for(char userChar: content){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
         auto t = std::time(nullptr);
         auto tm = *std::localtime(&t);
         std::ostringstream oss;
         oss << std::put_time(&tm, "%d-%m-%Y %H:%M");
         std::string str = oss.str();
-        ans[5]=str;
-        ans[6]=zero;
+        for(char userChar: str){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
     else if (ans[0] == "LOGSTAT"){
-        ans[0]="7";
+        opcode = 7;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
+        return returned;
     }
     else if (ans[0]=="STAT"){
-        ans[0]="8";
-        ans[1] = ans[1];
+        opcode = 8;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
+        std::string usernames = ans[1];
+        for(char userChar: usernames){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
+        return returned;
     }
     else if (ans[0] == "BLOCK"){
-        ans[0]="12";
-        ans[1]=ans[1];
-        ans[2]=zero;
+        opcode = 12;
+        shortToBytes(opcode, opBytes);
+        returned.push_back(opBytes[0]);
+        returned.push_back(opBytes[1]);
+        std::string username =ans[1];
+        for(char userChar: username){
+            returned.push_back(userChar);
+        }
+        returned.push_back(zero);
     }
-    for (std::string str : ans){
-        if (str!="")
-            toSend.append(str);
-    }
-    std::cout<<toSend<<std::endl;
-    return toSend;
+    return returned;
 }
 
 void encoderDecoder::shortToBytes(short num, char *bytesArr) {
@@ -123,7 +189,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         int index = 3;
         char currByte = bytes[index];
         while(currByte != '\0'){
-            ans.append(std::to_string(currByte));
+            ans += currByte;
             index++;
             currByte = bytes[index];
         }
@@ -131,7 +197,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         index++;
         currByte = bytes[index];
         while(currByte != '\0'){
-            ans.append(std::to_string(currByte));
+            ans += currByte;
             index++;
             currByte = bytes[index];
         }
@@ -149,7 +215,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
             int size = bytes.size();
             for(int i=4; i<size-1;i++){
                 char charByte = bytes[i];
-                ans.append(std::to_string(charByte));
+                ans += charByte;
             }
         }
         return ans;

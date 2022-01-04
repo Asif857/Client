@@ -51,14 +51,10 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     return true;
 }
 
-bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite,const char bytesarr[]) {
+bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
     int tmp = 0;
 	boost::system::error_code error;
     try {
-        if (bytesarr[0]!=-1) // else it is the delimeter write
-        while (!error && 2>tmp) {
-            tmp += socket_.write_some(boost::asio::buffer(bytesarr + tmp, 2 - tmp), error);
-        }
         tmp = 0;
         while (!error && bytesToWrite > tmp ) {
 			tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
@@ -76,7 +72,7 @@ bool ConnectionHandler::getLine(std::vector<char> bytes) {
     return getFrameAscii(bytes,';');
 }
 
-bool ConnectionHandler::sendLine(std::string& line) {
+bool ConnectionHandler::sendLine(std::vector<char> line) {
     return sendFrameAscii(line, ';');
 }
  
@@ -97,26 +93,14 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
     return true;
 }
  
-bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
-    std::string opcode;
-    std::string updatedFrame;
-    opcode = frame.at(0);
-    std::cout<<opcode<<std::endl;
-    if (frame.at(0)=='1' && frame.at(1)=='2'){
-        opcode = "12";
-        updatedFrame = frame.substr(2);
+bool ConnectionHandler::sendFrameAscii(const std::vector<char> frame, char delimiter) {
+    char updatedFrames[frame.size()];
+    std::copy(frame.begin(), frame.end(), updatedFrames);
+	bool result=sendBytes(updatedFrames,frame.size());
+    if(!result){
+        return false;
     }
-    else
-        updatedFrame = frame.substr(1);
-    std::stringstream strOpcode(opcode);
-    short shortopcode;
-    strOpcode >> shortopcode;
-    char bytes[2];
-    enc.shortToBytes(shortopcode,bytes);
-	bool result=sendBytes(updatedFrame.c_str(),updatedFrame.length(),bytes);
-    bytes[0]=-1;
-	if(!result) return false;
-	return sendBytes(&delimiter,1,bytes);
+	return sendBytes(&delimiter,1);
 }
  
 // Close down the connection properly.
@@ -128,7 +112,7 @@ void ConnectionHandler::close() {
     }
 }
 
-const encoderDecoder &ConnectionHandler::getEnc() const {
+ encoderDecoder &ConnectionHandler::getEnc(){
     return enc;
 }
 

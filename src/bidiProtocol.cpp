@@ -29,9 +29,11 @@ void bidiProtocol::process(std::string message){
     if(opcode == "9"){
         int notifType = message.at(1);
         index++;
-        std::string postingUsername = cutString(index, message);
+        std::string postingUsername;
+        postingUsername = cutString(index, message);
         index += postingUsername.size() + 1;
-        std::string content = cutString(index, message);
+        std::string content;
+        content = cutString(index, message);
         std::string messageType;
         if(notifType ==0){
             messageType = "PM";
@@ -43,12 +45,13 @@ void bidiProtocol::process(std::string message){
     }
     //ACK
     else if(opcode == "10"){
-        std::string messageOpcode = std::to_string(message.at(2));
+        std::string messageOpcode;
+        messageOpcode = (message.at(2));
         index ++;
         int messageLength = message.length();
         if(messageOpcode == "1"){
             if(index < messageLength && message.at(index+1) =='2'){
-                messageOpcode += std::to_string(message.at(index+1));
+                messageOpcode += message.at(index+1);
                 index++;
             }
         }
