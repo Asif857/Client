@@ -48,11 +48,15 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
     return true;
 }
 
-bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite,char* bytesarr) {
+bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite,const char bytesarr[]) {
     int tmp = 0;
 	boost::system::error_code error;
     try {
-        socket_.write_some(boost::asio::buffer(bytesarr))
+        if (bytesarr[0]!=-1) // else it is the delimeter write
+        while (!error && 2>tmp) {
+            tmp += socket_.write_some(boost::asio::buffer(bytesarr + tmp, 2 - tmp), error);
+        }
+        tmp = 0;
         while (!error && bytesToWrite > tmp ) {
 			tmp += socket_.write_some(boost::asio::buffer(bytes + tmp, bytesToWrite - tmp), error);
         }
@@ -106,8 +110,9 @@ bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter)
     char bytes[2];
     enc.shortToBytes(shortopcode,bytes);
 	bool result=sendBytes(updatedFrame.c_str(),updatedFrame.length(),bytes);
+    bytes[0]=-1;
 	if(!result) return false;
-	return sendBytes(&delimiter,1);
+	return sendBytes(&delimiter,1,bytes);
 }
  
 // Close down the connection properly.
