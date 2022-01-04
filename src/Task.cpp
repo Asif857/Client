@@ -14,3 +14,10 @@ std::condition_variable &Task::getCv()  {
     return cv;
 }
 
+Task &Task::operator=(const Task &other) {
+    return *this;
+}
+
+Task::Task(const Task &other):_handler(other._handler),cv() {
+}
+
