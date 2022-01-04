@@ -21,12 +21,13 @@ std::string encoderDecoder::encode(std::string msg) const {
             break;
         i++;
     }
+    while (ans.size()<7)
+        ans.push_back("");
     if (ans[0]=="REGISTER"){
         ans[0]="1";
         std::string userName = ans[1];
         std::string pass = ans[2];
         std::string birthday = ans[3];
-        ans[1]=userName;
         ans[2]=zero;
         ans[3]=pass;
         ans[4]=zero;
@@ -90,7 +91,8 @@ std::string encoderDecoder::encode(std::string msg) const {
         ans[2]=zero;
     }
     for (std::string str : ans){
-        toSend.append(str);
+        if (str!="")
+            toSend.append(str);
     }
     return toSend;
 }
