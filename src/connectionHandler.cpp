@@ -93,8 +93,6 @@ bool ConnectionHandler::getFrameAscii(std::vector<char> bytes,char delimiter) {
 }
  
 bool ConnectionHandler::sendFrameAscii(const std::vector<char>& frame, char delimiter) {
-    short opcode;
-    std::cout<<opcode<<std::endl;
     char updatedFrame[frame.size()];
     std::copy(frame.begin(),frame.end(),updatedFrame);
 	bool result=sendBytes(updatedFrame,frame.size());

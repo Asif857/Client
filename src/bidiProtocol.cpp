@@ -22,7 +22,7 @@ void bidiProtocol::process(std::string message){
         index = 2;
     }
     else{
-        opcode = std::to_string(message.at(0));
+        opcode = message.at(0);
         index = 1;
     }
     //Notification
@@ -43,12 +43,14 @@ void bidiProtocol::process(std::string message){
     }
     //ACK
     else if(opcode == "10"){
-        std::string messageOpcode = std::to_string(message.at(2));
+        std::string messageOpcode;
+        messageOpcode = message.at(2);
+        std::cout<<messageOpcode<<std::endl;
         index ++;
         int messageLength = message.length();
         if(messageOpcode == "1"){
             if(index < messageLength && message.at(index+1) =='2'){
-                messageOpcode += std::to_string(message.at(index+1));
+                messageOpcode += message.at(index+1);
                 index++;
             }
         }
