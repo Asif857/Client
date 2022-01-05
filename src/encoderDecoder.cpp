@@ -188,6 +188,11 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 std::string encoderDecoder::decode(std::vector<char> bytes) {
+    std::string stringBytes;
+//    for(char character :bytes){
+//        stringBytes += character;
+//        std::cout<<stringBytes<<std::endl;
+//    }
     char getBytes[2];
     std::string ans;
     getBytes[0] = bytes[0];
