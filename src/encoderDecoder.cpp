@@ -1,7 +1,7 @@
 #include "../include/encoderDecoder.h"
-#include <vector>
-#include <iosfwd>
+#include <iostream>
 #include <sstream>
+#include <vector>
 #include <ctime>
 #include <iomanip>
 #include <iostream>
@@ -202,7 +202,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         int index = 3;
         char currByte = bytes[index];
         while(currByte != '\0'){
-            ans.append(std::to_string(currByte));
+            ans += currByte;
             index++;
             currByte = bytes[index];
         }
@@ -210,7 +210,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         index++;
         currByte = bytes[index];
         while(currByte != '\0'){
-            ans.append(std::to_string(currByte));
+            ans += currByte;
             index++;
             currByte = bytes[index];
         }
@@ -228,7 +228,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
             int size = bytes.size();
             for(int i=4; i<size-1;i++){
                 char charByte = bytes[i];
-                ans.append(std::to_string(charByte));
+                ans += charByte;
             }
         }
         return ans;
