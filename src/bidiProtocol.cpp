@@ -69,6 +69,7 @@ void bidiProtocol::process(std::string message){
         errMsg = message.substr(2);
         std::cout<<("ERROR " + errMsg)<<std::endl;
     }
+    std::cout<<shouldTerminate()<<std::endl;
 }
 
 bool bidiProtocol::shouldTerminate()const {

@@ -6,6 +6,7 @@
 			[
 				{
 					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -48,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client/cmake-build-debug",
-		"source" : "/users/studs/bsc/2022/nadavyaf/CLionProjects/SPL3_client"
+		"build" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new/cmake-build-debug",
+		"source" : "/users/studs/bsc/2022/rolantas/CLionProjects/SPL3new"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 2
+		"minor" : 3
 	}
 }
