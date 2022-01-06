@@ -236,24 +236,10 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
                 ans.push_back(charByte);
             }
         }
-        else if(messageOpcode ==7){//logstat
-
-        }
-        else if(messageOpcode == 8){//stat
-
-        }
-        if(bytes.size() > 5){
-            int size = bytes.size();
-            for(int i=4; i<size-1;i++){
-                char charByte = bytes[i];
-                ans.push_back(charByte);
-            }
-        }
         //logstat
         else if (messageOpcode == 7) {
             int index = 4;
             int size = bytes.size();
-            std::cout<<"message size is " + std::to_string(size)<<std::endl;
             while(index<size-1){
                 for(int j=0; j<8;j+=2){
                     char input[2];
@@ -266,9 +252,20 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
                 index +=8;
             }
         }
-        //stat
-        else if (messageOpcode == 8) {
-
+        else if(messageOpcode == 8){//stat
+            int index = 4;
+            int size = bytes.size();
+            while(index<size-1){
+                for(int j=0; j<8;j+=2){
+                    char input[2];
+                    input[0] = bytes.at(index+j);
+                    input[1] = bytes.at(index +j +1);
+                    short shortInput = bytesToShort(input);
+                    ans.append(std::to_string(shortInput));
+                    ans.append(" ");
+                }
+                index +=8;
+            }
         }
         return ans;
     }
