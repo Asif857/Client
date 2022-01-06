@@ -59,7 +59,7 @@ void bidiProtocol::process(std::string message){
         }
         std::string optional;
         if(index < messageLength){
-            optional = message.substr(4);
+            optional = message.substr(index);
         }
         std::cout<<("ACK " + messageOpcode + " " + optional)<<std::endl;
     }

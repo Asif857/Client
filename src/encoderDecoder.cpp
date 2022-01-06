@@ -188,11 +188,6 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 std::string encoderDecoder::decode(std::vector<char> bytes) {
-    std::string stringBytes;
-//    for(char character :bytes){
-//        stringBytes += character;
-//        std::cout<<stringBytes<<std::endl;
-//    }
     char getBytes[2];
     std::string ans;
     getBytes[0] = bytes[0];
@@ -201,12 +196,12 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
     std::string strOpcode = std::to_string(opcode);
     ans.append(strOpcode);
     //notification
-    if(opcode == 9){
+    if (opcode == 9) {
         short shortByte = bytes[2];
         ans.append(std::to_string(shortByte));
         int index = 3;
         char currByte = bytes[index];
-        while(currByte != '\0'){
+        while (currByte != '\0') {
             ans.push_back(currByte);
             index++;
             currByte = bytes[index];
@@ -214,60 +209,60 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         ans.append(std::to_string('\0'));
         index++;
         currByte = bytes[index];
-        while(currByte != '\0'){
+        while (currByte != '\0') {
             ans.push_back(currByte);
             index++;
             currByte = bytes[index];
         }
         ans.push_back('\0');
     }
-    //ack
-    else if(opcode == 10){
+        //ack
+    else if (opcode == 10) {
         int size = bytes.size();
+        int index = 4;
         char newBytes[2];
         newBytes[0] = bytes[2];
         newBytes[1] = bytes[3];
         short messageOpcode = bytesToShort(newBytes);
         std::string stringMessageOpcode = std::to_string(messageOpcode);
         ans.append(stringMessageOpcode);
-        if(messageOpcode ==  4){
-            
-        }
-        else if(messageOpcode == 5){
-
-        }
-        else if(messageOpcode ==6){
-
-        }
-        else if(messageOpcode ==7){
-
-        }
-        else if(messageOpcode == 8){
-
-        }
-        if(bytes.size() > 5){
-            int size = bytes.size();
-            int j = 1;
-            for(int i=4; i<size-1;i++){
-                std::cout<<"GOT TO THE EXTRA PART! " + std::to_string(j)<<std::endl;
-                j++;
+        //follow
+        if (messageOpcode == 4) {
+            for (int i = index; i < size - 1; i++) {
                 char charByte = bytes[i];
-                std::cout<<"char byte is " + charByte<<std::endl;
                 ans.push_back(charByte);
-                std::cout<<"Current ans is " + ans<<std::endl;
             }
         }
-        std::cout<<"Decoded message is: " + ans<<std::endl;
+        //logstat
+        else if (messageOpcode == 7) {
+            while(index<size){
+                for(int j=0; j<8;j+=2){
+                    char input[2];
+                    input[0] = bytes[index];
+                    index++;
+                    input[1] = bytes[index];
+                    index++;
+                    short shortInput = bytesToShort(input);
+                    std::cout<<"short input is " + std::to_string(shortInput)<<std::endl;
+                    ans.append(std::to_string(shortInput));
+                    ans.append(" ");
+                }
+            }
+        }
+        //stat
+        else if (messageOpcode == 8) {
+
+        }
         return ans;
     }
-    //error
-    else if(opcode == 11){
-      char newBytes[2];
-      newBytes[0] = bytes[2];
-      newBytes[1] = bytes[3];
-      short messageOpcode = bytesToShort(newBytes);
-      std::string stringMessageOpcode = std::to_string(messageOpcode);
-      ans.append(stringMessageOpcode);
-    }
-    return ans;
+            //error
+        else if (opcode == 11) {
+            char newBytes[2];
+            newBytes[0] = bytes[2];
+            newBytes[1] = bytes[3];
+            short messageOpcode = bytesToShort(newBytes);
+            std::string stringMessageOpcode = std::to_string(messageOpcode);
+            ans.append(stringMessageOpcode);
+        }
+        return ans;
 }
