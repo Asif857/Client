@@ -188,11 +188,6 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 std::string encoderDecoder::decode(std::vector<char> bytes) {
-    std::string stringBytes;
-//    for(char character :bytes){
-//        stringBytes += character;
-//        std::cout<<stringBytes<<std::endl;
-//    }
     char getBytes[2];
     std::string ans;
     getBytes[0] = bytes[0];
@@ -233,12 +228,23 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
 
         }
         else if(messageOpcode ==7){//logstat
-
+            int index = 4;
+            char tempByte[2];
+            while (index<bytes.size()-1){
+                for (int cut =0;cut<4;cut++) {
+                    tempByte[0] = bytes[index];
+                    tempByte[1]=bytes[index+1];
+                    std::cout<<this->bytesToShort(tempByte)<<std::endl;
+                    std::cout<<std::to_string(this->bytesToShort(tempByte)) + " Stringed one"<<std::endl;
+                    index = index + 2;
+                    ans.append(std::to_string(this->bytesToShort(tempByte)) + " ");
+                }
+            }
         }
         else if(messageOpcode == 8){//stat
 
         }
-        if(bytes.size() > 5){
+        else if(bytes.size() > 5){
             int size = bytes.size();
             for(int i=4; i<size-1;i++){
                 char charByte = bytes[i];
