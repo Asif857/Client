@@ -188,6 +188,11 @@ short encoderDecoder::bytesToShort(char* bytesArr)
     return result;
 }
 std::string encoderDecoder::decode(std::vector<char> bytes) {
+    std::string stringBytes;
+//    for(char character :bytes){
+//        stringBytes += character;
+//        std::cout<<stringBytes<<std::endl;
+//    }
     char getBytes[2];
     std::string ans;
     getBytes[0] = bytes[0];
@@ -202,7 +207,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         int index = 3;
         char currByte = bytes[index];
         while(currByte != '\0'){
-            ans += currByte;
+            ans.push_back(currByte);
             index++;
             currByte = bytes[index];
         }
@@ -210,27 +215,49 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         index++;
         currByte = bytes[index];
         while(currByte != '\0'){
-            ans += currByte;
+            ans.push_back(currByte);
             index++;
             currByte = bytes[index];
         }
-        ans.append(std::to_string('\0'));
+        ans.push_back('\0');
     }
     //ack
     else if(opcode == 10){
+        int size = bytes.size();
         char newBytes[2];
         newBytes[0] = bytes[2];
         newBytes[1] = bytes[3];
         short messageOpcode = bytesToShort(newBytes);
         std::string stringMessageOpcode = std::to_string(messageOpcode);
         ans.append(stringMessageOpcode);
+        if(messageOpcode ==  4){
+            
+        }
+        else if(messageOpcode == 5){
+
+        }
+        else if(messageOpcode ==6){
+
+        }
+        else if(messageOpcode ==7){
+
+        }
+        else if(messageOpcode == 8){
+
+        }
         if(bytes.size() > 5){
             int size = bytes.size();
+            int j = 1;
             for(int i=4; i<size-1;i++){
+                std::cout<<"GOT TO THE EXTRA PART! " + std::to_string(j)<<std::endl;
+                j++;
                 char charByte = bytes[i];
-                ans += charByte;
+                std::cout<<"char byte is " + charByte<<std::endl;
+                ans.push_back(charByte);
+                std::cout<<"Current ans is " + ans<<std::endl;
             }
         }
+        std::cout<<"Decoded message is: " + ans<<std::endl;
         return ans;
     }
     //error
