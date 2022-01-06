@@ -7,8 +7,8 @@ void Task::run(){
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             break;
         }
+        cv.notify_all();
     }
-    cv.notify_all();
 }
 std::condition_variable &Task::getCv()  {
     return cv;

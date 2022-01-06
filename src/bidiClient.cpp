@@ -38,12 +38,10 @@ int main (int argc, char *argv[]) {
         char opcode[2];
         opcode[0]=sendLine[0];
         opcode[1]=sendLine[1];
-        char errack[2];
-        errack[0]=sendLine[2];
-        errack[1]=sendLine[3];
-        if (connectionHandler.getEnc().bytesToShort(opcode) == 3 && connectionHandler.getEnc().bytesToShort(errack) == 10){
-           task1.getCv().wait(lk);
+        if (connectionHandler.getEnc().bytesToShort(opcode) == 3){
+            task1.getCv().wait(lk);
         }
         std::cout << "Sent " << len + 1 << " bytes to server" << std::endl;
     }
+    th1.join();
 }
