@@ -235,18 +235,17 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
         }
         //logstat
         else if (messageOpcode == 7) {
-            while(index<size){
+            std::cout<<"message size is " + std::to_string(size)<<std::endl;
+            while(index<size-1){
                 for(int j=0; j<8;j+=2){
                     char input[2];
-                    input[0] = bytes[index];
-                    index++;
-                    input[1] = bytes[index];
-                    index++;
+                    input[0] = bytes.at(index+j);
+                    input[1] = bytes.at(index +j +1);
                     short shortInput = bytesToShort(input);
-                    std::cout<<"short input is " + std::to_string(shortInput)<<std::endl;
                     ans.append(std::to_string(shortInput));
                     ans.append(" ");
                 }
+                index +=8;
             }
         }
         //stat
