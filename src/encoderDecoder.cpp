@@ -211,7 +211,6 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
             index++;
             currByte = bytes[index];
         }
-        ans.append(std::to_string('\0'));
         index++;
         currByte = bytes[index];
         while(currByte != '\0'){

@@ -15,6 +15,7 @@ std::string bidiProtocol::cutString(int index, std::string str){
 
 
 void bidiProtocol::process(std::string message){
+    std::cout << message + " this is the message." << std::endl;
     int index;
     std::string opcode;
     if(message.at(0) == '1') {
@@ -28,9 +29,9 @@ void bidiProtocol::process(std::string message){
     //Notification
     if(opcode == "9"){
         int notifType = message.at(1);
-        index++;
+        index=index + 2;
         std::string postingUsername = cutString(index, message);
-        index += postingUsername.size() + 1;
+        index += postingUsername.size() + 2;
         std::string content = cutString(index, message);
         std::string messageType;
         if(notifType ==0){
