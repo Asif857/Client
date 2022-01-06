@@ -121,7 +121,7 @@ std::vector<char> encoderDecoder::encode(std::string msg) const {
         byte.push_back(opbyte[0]);
         byte.push_back(opbyte[1]);
         std::string userName = ans[1];
-        std::string content=msg.substr(3+ans[1].length());
+        std::string content=msg.substr(4+ans[1].length());
         for (char c : userName){
             byte.push_back(c);
         }
@@ -131,18 +131,18 @@ std::vector<char> encoderDecoder::encode(std::string msg) const {
         }
         byte.push_back('\0');
 //        ans[1]=userName;
-//        ans[2]=zero;
-//        ans[3]=content;
-//        ans[4]=zero;
-        auto t = std::time(nullptr);
-        auto tm = *std::localtime(&t);
-        std::ostringstream oss;
-        oss << std::put_time(&tm, "%d-%m-%Y %H:%M");
-        std::string str = oss.str();
-        for (char c : str){
-            byte.push_back(c);
-        }
-        byte.push_back('\0');
+//       ans[2]=zero;
+//      ans[3]=content;
+//       ans[4]=zero;
+//        auto t = std::time(nullptr);
+//        auto tm = *std::localtime(&t);
+//        std::ostringstream oss;
+//        oss << std::put_time(&tm, "%d-%m-%Y %H:%M");
+//        std::string str = oss.str();
+//        for (char c : str){
+//            byte.push_back(c);
+//        }
+//        byte.push_back('\0');
 
 //        ans[6]=zero;
     }
@@ -206,6 +206,7 @@ std::string encoderDecoder::decode(std::vector<char> bytes) {
             index++;
             currByte = bytes[index];
         }
+        ans.push_back(' ');
         index++;
         currByte = bytes[index];
         while (currByte != '\0') {
